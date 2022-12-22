@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment} from 'react';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Login from './paginas/auth/Login';
+import CrearCuenta from './paginas/auth/CrearCuenta';
+import Home from './paginas/Home';
+import ProyectosAdmin from './paginas/proyectos/ProyectosAdmin';
+import ProyectosCrear from './paginas/proyectos/ProyectosCrear';
+import ProyectosEditar from './paginas/proyectos/ProyectosEditar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Router>
+        <Routes>
+          <Route path="/" exact element={<Login/>} />
+          <Route path="/crear-cuenta" exact element={<CrearCuenta/>} />
+          <Route path="/home" exact element={<Home/>}/>
+          <Route path="/proyectos-admin" exact element={<ProyectosAdmin/>}/>
+          <Route path="/proyectos-crear" exact element={<ProyectosCrear/>}/>
+          <Route path="/proyectos-editar/:idproyecto" exact element={<ProyectosEditar/>}/>
+        </Routes>
+      </Router>
+    </Fragment>
   );
 }
 
